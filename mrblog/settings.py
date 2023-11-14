@@ -166,6 +166,7 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_CONFIGS = {
     'default': {
+        'removePlugins': 'stylesheetparser',
         'toolbar': 'full',
         'height': 900,
         'width': 1340,
