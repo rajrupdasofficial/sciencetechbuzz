@@ -1,0 +1,52 @@
+stages:
+  - install
+  - linting
+  - coverage
+  - testing
+processing install:
+  image: python:3.10.9
+  stage: install
+  script:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+processing linting with flake8:
+  image: python:3.10.9
+  stage: linting
+  script:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pip install flake8
+    - flake8
+processing coverage report:
+  image: python:3.10.9
+  stage: coverage
+  variables:
+    SECRET_KEY: "this is a testing secret key"
+    admin: admin
+  script:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pip install coverage
+    - coverage run manage.py test
+    - coverage report
+    - coverage html
+    - mkdir coveragereport
+    - mv htmlcov coveragereport
+  artifacts:
+    untracked: false
+    when: on_success
+    expire_in: "30 days"
+    paths:
+      - coveragereport
+django teting from testfile:
+  image: python:3.10.9
+  stage: testing
+  variables:
+    SECRET_KEY: "this is a testing secret key"
+    admin: admin
+  script:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - python manage.py test
+
+
