@@ -179,12 +179,12 @@ MESSAGE_TAGS = {
 
 
 if PRODUCTION:
-    AZURE_QUERYSTRING_AUTH = False
     DEFAULT_FILE_STORAGE = 'mrblog.azure_storage.AzureMediaStorage'
     STATICFILES_STORAGE = 'mrblog.azure_storage.AzureStaticStorage'
     AZURE_CUSTOM_DOMAIN = config('AZURE_CUSTOM_DOMAIN')
     AZURE_ACCOUNT_NAME = config('AZURE_ACCOUNT_NAME')
     AZURE_ACCOUNT_KEY = config('AZURE_ACCOUNT_KEY')
+    AWS_QUERYSTRING_AUTH = False
     AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
     STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/static/'
     STATIC_ROOT = BASE_DIR / 'staticfiles'
