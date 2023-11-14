@@ -20,6 +20,13 @@ IS_MEMCACHED = True if config('IS_MEMCACHED') == "True" else False
 AUTH_USER_MODEL = 'accounts.User'
 # SECURITY WARNING: don't run with debug turned on in production!
 
+if PRODUCTION:
+    maindomain = config('MAIN_DOMAIN')
+
+    CSRF_TRUSTED_ORIGINS = [
+        f"{maindomain}"
+    ]
+
 ALLOWED_HOSTS = ["*"]
 
 
@@ -170,6 +177,15 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success'
 }
+if PRODUCTION:
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+    ##
+    # HSTS settings
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 if PRODUCTION:
     DEFAULT_FILE_STORAGE = 'mrblog.azure_storage.AzureMediaStorage'
