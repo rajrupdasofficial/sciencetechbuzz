@@ -28,6 +28,7 @@ if PRODUCTION:
     ]
     SECURE_SSL_REDIRECT = True
 
+
 ALLOWED_HOSTS = ["*"]
 
 
@@ -102,8 +103,9 @@ if PRODUCTION:
             'NAME': config('DATABASE_NAME'),
             'HOST': config('PGHOST'),
             'USER': config('DBUSERNAME'),
-            'PASSWORD': config('SUPABASE_PASSWORD'),
+            'PASSWORD': config('DBPASSWORD'),
             'PORT': config('PGPORT'),
+            'OPTIONS': {'sslmode': 'require'},
 
         }
     }
@@ -162,7 +164,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_CONFIGS = {
@@ -178,13 +180,22 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success'
 }
 
+if PRODUCTION:
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_SSL_REDIRECT = True
+    ##
+    # HSTS settings
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 if PRODUCTION:
-    DEFAULT_FILE_STORAGE = 'core.azure_storage.AzureMediaStorage'
-    STATICFILES_STORAGE = 'core.azure_storage.AzureStaticStorage'
-
-    AZURE_ACCOUNT_NAME = os.getenv('AZURE_ACCOUNT_NAME')
-    AZURE_ACCOUNT_KEY = os.getenv('AZURE_ACCOUNT_KEY')
+    DEFAULT_FILE_STORAGE = 'mrblog.azure_storage.AzureMediaStorage'
+    STATICFILES_STORAGE = 'mrblog.azure_storage.AzureStaticStorage'
+    AZURE_CUSTOM_DOMAIN = config('AZURE_CUSTOM_DOMAIN')
+    AZURE_ACCOUNT_NAME = config('AZURE_ACCOUNT_NAME')
+    AZURE_ACCOUNT_KEY = config('AZURE_ACCOUNT_KEY')
     AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
 
     STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/static/'
