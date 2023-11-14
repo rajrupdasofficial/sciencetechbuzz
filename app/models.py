@@ -11,6 +11,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 import os
 from taggit.managers import TaggableManager
 from django.conf import settings
+from tinymce.models import HTMLField
 
 
 class Analytics(models.Model):
@@ -38,7 +39,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     category = models.CharField(max_length=255, default=None)
     thumbnail = models.ImageField(upload_to=image_upload_to, default=None)
-    content = RichTextUploadingField()
+    content = HTMLField(default=None, blank=True, null=True)
     tags = TaggableManager(blank=True)
     featured = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)

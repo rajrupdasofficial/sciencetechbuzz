@@ -6,6 +6,7 @@ from decouple import config
 urlpatterns = [
     path("", include('app.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('tinymce/', include('tinymce.urls')),
     path(config('admin'), admin.site.urls),
 
 ]
