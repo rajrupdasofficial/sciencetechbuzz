@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from gallery.models import Photo
 from django.contrib import messages
 
-websitenames = "TechGuru News"
+websitenames = "Science Tech Buzz"
 
 
 def index(request):
