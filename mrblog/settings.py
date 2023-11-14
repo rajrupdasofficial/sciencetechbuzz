@@ -96,6 +96,7 @@ if PRODUCTION:
             'USER': config('DBUSERNAME'),
             'PASSWORD': config('SUPABASE_PASSWORD'),
             'PORT': config('PGPORT'),
+            'OPTIONS': {'sslmode': 'require'},
 
         }
     }
