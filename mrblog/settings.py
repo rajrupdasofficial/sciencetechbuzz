@@ -22,12 +22,9 @@ AUTH_USER_MODEL = 'accounts.User'
 
 if PRODUCTION:
     maindomain = config('MAIN_DOMAIN')
-
     CSRF_TRUSTED_ORIGINS = [
         f"{maindomain}"
     ]
-    SECURE_SSL_REDIRECT = True
-
 
 ALLOWED_HOSTS = ["*"]
 
