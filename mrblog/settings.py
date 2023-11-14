@@ -94,7 +94,7 @@ if PRODUCTION:
             'NAME': config('DATABASE_NAME'),
             'HOST': config('PGHOST'),
             'USER': config('DBUSERNAME'),
-            'PASSWORD': config('SUPABASE_PASSWORD'),
+            'PASSWORD': config('DBPASSWORD'),
             'PORT': config('PGPORT'),
             'OPTIONS': {'sslmode': 'require'},
 
