@@ -26,6 +26,7 @@ if PRODUCTION:
     CSRF_TRUSTED_ORIGINS = [
         f"{maindomain}"
     ]
+    SECURE_SSL_REDIRECT = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -176,15 +177,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success'
 }
-if PRODUCTION:
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_SSL_REDIRECT = True
-    ##
-    # HSTS settings
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_HSTS_PRELOAD = True
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
 
 if PRODUCTION:
     DEFAULT_FILE_STORAGE = 'core.azure_storage.AzureMediaStorage'
