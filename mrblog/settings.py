@@ -26,6 +26,8 @@ if PRODUCTION:
     CSRF_TRUSTED_ORIGINS = [
         f"{maindomain}"
     ]
+    SECURE_SSL_REDIRECT = True
+
 
 ALLOWED_HOSTS = ["*"]
 
@@ -177,6 +179,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success'
 }
+
 if PRODUCTION:
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
