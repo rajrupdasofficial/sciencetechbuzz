@@ -180,15 +180,6 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success'
 }
 
-if PRODUCTION:
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_SSL_REDIRECT = True
-    ##
-    # HSTS settings
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_HSTS_PRELOAD = True
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 if PRODUCTION:
     DEFAULT_FILE_STORAGE = 'mrblog.azure_storage.AzureMediaStorage'
