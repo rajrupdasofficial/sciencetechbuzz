@@ -5,25 +5,23 @@
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="">
+<link rel="icon" type="images/x-icon" href="{%  static 'images/favicon.ico' %}">
+<meta property="og:title" content="{{blog.title}}">
+<meta name="description" content="{{blog.content|safe|striptags|truncatechars:150}}">
+<meta property="og:description" content="{{blog.content|safe|striptags|truncatechars:150}}">
+<meta property="og:image" content="{% if blog.thumbnail %}{{ blog.thumbnail.url }}
+            {% else %}https://sciencetechbuzz.com{% static 'images/gallery-bg.jpg' %}{% endif %}">
+<meta name="keywords" content="{{blog.tags}}">
+<meta name="author" content="{{ blog.author.username }}">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<title>Techgurunews -| {{blog.title}}</title>
-<!--
+<title>{{websitename}} -| {{blog.title}}</title>
 
-Template 2085 Neuron
-
-http://www.tooplate.com/view/2085-neuron
-
--->
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
-<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
 
 <!-- Main css -->
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet">
 <style>
 .main-single-post {
      background: url("{{ blog.thumbnail.url }}") no-repeat;
@@ -31,15 +29,6 @@ http://www.tooplate.com/view/2085-neuron
 </style>
 </head>
 <body>
-
-<!-- PRE LOADER -->
-
-<div class="preloader">
-     <div class="sk-spinner sk-spinner-wordpress">
-          <span class="sk-inner-circle"></span>
-     </div>
-</div>
-
 <!-- Navigation section  -->
 
 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -96,7 +85,7 @@ http://www.tooplate.com/view/2085-neuron
 
                          <div class="blog-post-format">
                               <span><a href="#"><img src="{{ blog.thumbnail.url }}" class="img-responsive img-circle">{{ blog.author.username }}</a></span>
-                              <span><i class="fa fa-date"></i>{{ blog.created }}</span>
+                              <span><ion-icon name="calendar-outline"></ion-icon>{{ blog.created }}</span>
                               <!--<span><a href="#"><i class="fa fa-comment-o"></i> </a></span>-->
                          </div>
 
@@ -180,7 +169,7 @@ http://www.tooplate.com/view/2085-neuron
      <div class="container">
           <div class="row">
                <div class="col-md-5 col-md-offset-1 col-sm-6">
-                    <h3>TechGuru News.tech</h3>
+                    <h3>{{websitename}}</h3>
                     <p>A robotics and Tech blogging site updated daily</p>
                     <div class="footer-copyright">
                          <p>Copyright &copy; 2023 TechGuru News- Design: Team</p>
@@ -200,22 +189,22 @@ http://www.tooplate.com/view/2085-neuron
 
                <div class="col-md-12 col-sm-12">
                     <ul class="social-icon">
-                         <li><a href="#" class="fa fa-facebook"></a></li>
-                         <li><a href="#" class="fa fa-twitter"></a></li>
-                         <li><a href="#" class="fa fa-google-plus"></a></li>
-                         <li><a href="#" class="fa fa-dribbble"></a></li>
-                         <li><a href="#" class="fa fa-linkedin"></a></li>
+                         <li><a href="#" class=""><ion-icon name="logo-facebook"></ion-icon></a></li>
+                         <li><a href="#" class=""><ion-icon name="logo-behance"></ion-icon></a></li>
+                         <li><a href="#" class=""><ion-icon name="logo-dribbble"></ion-icon></a></li>
+                         <li><a href="#" class=""><ion-icon name="logo-instagram"></ion-icon></a></li>
+                         <li><a href="#" class=""><ion-icon name="play-outline"></ion-icon></a></li>
                     </ul>
                </div>
-               
           </div>
      </div>
 </footer>
 
 <!-- Back top -->
-<a href="#back-top" class="go-top"><i class="fa fa-angle-up"></i></a>
+<a href="#back-top" class="go-top"><ion-icon name="chevron-up-outline"></ion-icon></a>
 
 <!-- SCRIPTS -->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/particles.min.js' %}"></script>
@@ -223,13 +212,6 @@ http://www.tooplate.com/view/2085-neuron
 <script src="{% static 'js/jquery.parallax.js' %}"></script>
 <script src="{% static 'js/smoothscroll.js' %}"></script>
 <script src="{% static 'js/custom.js' %}"></script>
-<!--<script src="{% static 'js/jquery.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/jquery.parallax.js' %}"></script>
-<script src="{% static 'js/custom.js' %}"></script>
-<script src="{% static 'js/custom.js' %}"></script>
-<script src="{% static 'js/jquery.parallax.js' %}"></script>
-<script src="{% static 'js/app.js' %}"></script>
--->
+
 </body>
 </html>

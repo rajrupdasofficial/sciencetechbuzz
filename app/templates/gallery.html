@@ -5,12 +5,13 @@
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="icon" type="images/x-icon" href="{%  static 'images/favicon.ico' %}">
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<title>{{websitename}} | Experiment | Gallery Experiment</title>
+<title>{{websitename}} | Picture Showcase</title>
 <!--
 
 Template 2085 Neuron
@@ -19,13 +20,10 @@ http://www.tooplate.com/view/2085-neuron
 
 -->
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
 
 <!-- Main css -->
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-<link href="https://fonts.googleapis.com/css?family=Lora|Merriweather:300,400" rel="stylesheet">
-
 </head>
 <body>
 
@@ -144,11 +142,11 @@ http://www.tooplate.com/view/2085-neuron
 
                <div class="col-md-12 col-sm-12">
                     <ul class="social-icon">
-                         <li><a href="#" class="fa fa-facebook"></a></li>
-                         <li><a href="#" class="fa fa-twitter"></a></li>
-                         <li><a href="#" class="fa fa-google-plus"></a></li>
-                         <li><a href="#" class="fa fa-dribbble"></a></li>
-                         <li><a href="#" class="fa fa-linkedin"></a></li>
+                         <li><a href="#" class=""><ion-icon name="logo-facebook"></ion-icon></a></li>
+                         <li><a href="#" class=""><ion-icon name="logo-behance"></ion-icon></a></li>
+                         <li><a href="#" class=""><ion-icon name="logo-dribbble"></ion-icon></a></li>
+                         <li><a href="#" class=""><ion-icon name="logo-instagram"></ion-icon></a></li>
+                         <li><a href="#" class=""><ion-icon name="play-outline"></ion-icon></a></li>
                     </ul>
                </div>
                
@@ -157,9 +155,10 @@ http://www.tooplate.com/view/2085-neuron
 </footer>
 
 <!-- Back top -->
-<a href="#back-top" class="go-top"><i class="fa fa-angle-up"></i></a>
+<a href="#back-top" class="go-top"><ion-icon name="chevron-up-outline"></ion-icon></a>
 
 <!-- SCRIPTS -->
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 
 <script src="{% static 'js/jquery.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
