@@ -208,6 +208,7 @@ MESSAGE_TAGS = {
 
 
 if PRODUCTION:
+    AZURE_QUERYSTRING_AUTH = False
     DEFAULT_FILE_STORAGE = 'mrblog.azure_storage.AzureMediaStorage'
     STATICFILES_STORAGE = 'mrblog.azure_storage.AzureStaticStorage'
     AZURE_CUSTOM_DOMAIN = config('AZURE_CUSTOM_DOMAIN')
