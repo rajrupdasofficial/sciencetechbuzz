@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<link rel="icon" type="images/x-icon" href="{%  static 'images/favicon.ico' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+{% block style %} {% endblock %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<!-- Main css -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% if blog.slug in request.path %}
+<meta name="description" content="{{blog.content|safe|striptags|truncatechars:150}}">
+<meta property="og:title" content="{{blog.title}}">
+<meta property="og:description" content="{{blog.content|safe|striptags|truncatechars:150}}">
+<meta property="og:image" content="{% if blog.thumbnail %}{{ blog.thumbnail.url }}
+            {% else %}https://sciencetechbuzz.com{% static 'images/gallery-bg.jpg' %}{% endif %}">
+<meta property="og:url" content="https://sciencetechbuzz.com/{{blog.title}}" >
+<meta name="keywords" content="{% for tag in blog.tags.all %}{{tag.name}}{% if not forloop.last %},{% endif %}{% endfor %}">
+<meta name="author" content="{{ blog.author.username }}">
+<meta name="twitter:card" content="summary_large_image" />   
+<meta name="twtter:site" content="https://sciencetechbuzz.com/{{blog.title}}" />
+<meta name="twtter:creator" content="{{ blog.author.username }}" /> 
+{% else %}
+<meta name='description' content="">
+<meta property="og:image" content="https://image-url.png">
+<meta property="og:url" content="https://sciencetechbuzz.com" >
+
+<meta name="twitter:card" content="summary_large_image" />   
+<meta name="twtter:site" content="https://sciencetechbuzz.com" />
+<meta name="twtter:creator" content="@authors" /> 
+{% endif %}
+<title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    <!-- Navigation section  -->
+
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+     <div class="container">
+
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+               </button>
+               <a href="{% url 'indexpage' %}" class="navbar-brand">{{websitename}}</a>
+          </div>
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="{% url 'indexpage' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+               </ul>
+          </div>
+
+  </div>
+</div>
+<div class="content" id="content">
+    {% block content %} 
+    {% endblock %}
+  </div>
+
+  
+<!-- Footer Section -->
+
+<footer>
+    <div class="container">
+         <div class="row">
+
+              <div class="col-md-5 col-md-offset-1 col-sm-6">
+                   <h3>{{websitename}}</h3>
+                   <p>A robotics and Tech blogging site updated daily</p>
+                   <div class="footer-copyright">
+                        <p>Copyright &copy; 2023 {{websitename}}- Design: Team</p>
+                   </div>
+              </div>
+
+              <div class="col-md-4 col-md-offset-1 col-sm-6">
+                   <h3>Talk to us</h3>
+                   <p><i class="fa fa-globe"></i>Bangaluru, India</p>
+                   <p><i class="fa fa-phone"></i> 010-020-0990</p>
+                   <p><i class="fa fa-save"></i> info@company.com</p>
+              </div>
+
+              <div class="clearfix col-md-12 col-sm-12">
+                   <hr>
+              </div>
+
+              <div class="col-md-12 col-sm-12">
+                   <ul class="social-icon">
+                        <li><a href="https://www.facebook.com/profile.php?id=61553799650308" class=""><ion-icon name="logo-facebook"></ion-icon></a></li>
+                        <li><a href="#" class=""><ion-icon name="logo-behance"></ion-icon></a></li>
+                        <li><a href="#" class=""><ion-icon name="logo-dribbble"></ion-icon></a></li>
+                        <li><a href="#" class=""><ion-icon name="logo-instagram"></ion-icon></a></li>
+                        <li><a href="#" class=""><ion-icon name="play-outline"></ion-icon></a></li>
+                   </ul>
+              </div>
+              
+         </div>
+    </div>
+</footer>
+
+<!-- Back top -->
+<a href="#back-top" class="go-top"><ion-icon name="chevron-up-outline"></ion-icon></a>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/particles.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/jquery.parallax.js' %}"></script>
+<script src="{% static 'js/smoothscroll.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>

@@ -15,22 +15,32 @@ def index(request):
         paginator = Paginator(all_blog, paginated_number)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
+        breadcrumbs = [
+            {'title': 'Home', 'url': '/'},
+        ]
         context = {
             'websitename': indexname,
             'page_obj': page_obj,
+            'breadcrumbs': breadcrumbs,
         }
         return render(request, 'index.html', context)
     else:
         messages.error(request, "Something went wrong please try again")
 
 
-def blogdetail(request, slug):
+def blogdetail(request, category, slug):
     if request.method == "GET":
         indexname = websitenames
-        blog = get_object_or_404(Blog, slug=slug)
+        blog = get_object_or_404(Blog, category=category, slug=slug)
+        breadcrumbs = [
+            {'title': 'Home', 'url': '/'},
+            {'title': blog.category},
+            {'title': blog.title, 'url': f'{blog.category}/{blog.title}'},
+        ]
         context = {
             'websitename': indexname,
             "blog": blog,
+            "breadcrumbs": breadcrumbs,
         }
         return render(request, 'single-post.html', context)
     elif request.method == "POST":
@@ -56,9 +66,14 @@ def galleryview(request):
         gallery_paginator = Paginator(all_images, paginated_gallery_number)
         page_number = request.GET.get('page')
         page_obj = gallery_paginator.get_page(page_number)
+        breadcrumbs = [
+            {'title': 'Home', 'url': '/'},
+            {'title': 'Gallery', 'url': '/artgallery'}
+        ]
         context = {
             'websitename': indexname,
-            'page_obj': page_obj
+            'page_obj': page_obj,
+            'breadcrumbs': breadcrumbs,
         }
         return render(request, 'gallery.html', context)
     else:
@@ -68,14 +83,24 @@ def galleryview(request):
 def contactview(request):
     if request.method == "GET":
         indexname = websitenames
+        breadcrumbs = [
+            {'title': 'Home', 'url': '/'},
+            {'title': 'Contact', 'url': '/contact'}
+        ]
         context = {
             'websitename': indexname,
+            'breadcrumbs': breadcrumbs,
         }
         return render(request, 'contact.html', context)
     elif request.method == "POST":
         indexname = websitenames
+        breadcrumbs = [
+            {'title': 'Home', 'url': '/'},
+            {'title': 'Contact', 'url': '/contact'}
+        ]
         context = {
             'websitename': indexname,
+            'breadcrumbs': breadcrumbs,
         }
         name = request.POST["name"]
         email = request.POST["email"]
@@ -97,8 +122,13 @@ def contactview(request):
 def aboutview(request):
     if request.method == "GET":
         indexname = websitenames
+        breadcrumbs = [
+            {'title': 'Home', 'url': '/'},
+            {'title': 'About', 'url': '/about'}
+        ]
         context = {
             'websitename': indexname,
+            'breadcrumbs': breadcrumbs,
         }
         return render(request, "about.html", context)
     else:

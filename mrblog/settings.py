@@ -34,8 +34,6 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'app.apps.AppConfig',
-    'ckeditor',
-    'ckeditor_uploader',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sitemaps',
@@ -69,7 +67,7 @@ ROOT_URLCONF = 'mrblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -154,25 +152,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticdir')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# TINYMCE_JS_URL = ""#os.path.join(STATIC_URL, "tiny_mce/tiny_mce.js")
-# TINYMCE_JS_ROOT = os.path.join(STATIC_ROOT, "tiny_mce")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js'
-CKEDITOR_UPLOAD_PATH = "uploads/"
-CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_CONFIGS = {
-    'default': {
-        'removePlugins': 'stylesheetparser',
-        'toolbar': 'full',
-        'height': 900,
-        'width': 1340,
-    },
-}
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,

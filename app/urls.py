@@ -10,7 +10,7 @@ sitemaps = {
 
 urlpatterns = [
     path("", index, name="indexpage"),
-    path("<slug:slug>.html", blogdetail, name="article-detail"),
+    path("<str:category>/<slug:slug>.html", blogdetail, name="article-detail"),
     path("artgallery", galleryview, name="gallery"),
     path("contact", contactview, name="contact"),
     path("about", aboutview, name="about"),
