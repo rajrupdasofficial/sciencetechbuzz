@@ -1,57 +1,26 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<link rel="icon" type="images/x-icon" href="{%  static 'images/favicon.ico' %}">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>{% block title %}{{websitename}} | About {% endblock %}</title>
 
-<title>{{websitename}} | About</title>
-
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-
-<!-- Main css -->
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-
-</head>
-<body>
+{% block content %}
 
 <!-- PRE LOADER -->
-
+<div class="container mt-5">
+     <nav aria-label="breadcrumb">
+         <ol class="breadcrumb" style="display: flex; flex-wrap: wrap;">
+             {% for breadcrumb in breadcrumbs %}
+                 <li class="breadcrumb-item">
+                     <a href="{{ breadcrumb.url }}"><ion-icon name="logo-web-component"></ion-icon>{{ breadcrumb.title }}</a>
+                 </li>
+             {% endfor %}
+         </ol>
+     </nav>
+ </div>
 <div class="preloader">
      <div class="sk-spinner sk-spinner-wordpress">
           <span class="sk-inner-circle"></span>
      </div>
-</div>
-
-<!-- Navigation section  -->
-
-<div class="navbar navbar-default navbar-static-top" role="navigation">
-     <div class="container">
-
-          <div class="navbar-header">
-               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon icon-bar"></span>
-                    <span class="icon icon-bar"></span>
-                    <span class="icon icon-bar"></span>
-               </button>
-               <a href="{% url 'indexpage' %}" class="navbar-brand">{{websitename}}</a>
-          </div>
-          <div class="collapse navbar-collapse">
-               <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{% url 'indexpage' %}">Home</a></li>
-                    <li class="active"><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-               </ul>
-          </div>
-
-  </div>
 </div>
 
 <!-- Home Section -->
@@ -131,56 +100,4 @@
           </div>
      </div>
 </section>
-
-<!-- Footer Section -->
-
-<footer>
-     <div class="container">
-          <div class="row">
-
-               <div class="col-md-5 col-md-offset-1 col-sm-6">
-                    <h3>{{websitename}}</h3>
-                    <p>A robotics and Tech blogging site updated daily</p>
-                    <div class="footer-copyright">
-                         <p>Copyright &copy; 2023 TechGuru News- Design: Team</p>
-                    </div>
-               </div>
-
-               <div class="col-md-4 col-md-offset-1 col-sm-6">
-                    <h3>Talk to us</h3>
-                    <p><i class="fa fa-globe"></i>Bangaluru, India</p>
-                    <p><i class="fa fa-phone"></i> 010-020-0990</p>
-                    <p><i class="fa fa-save"></i> info@company.com</p>
-               </div>
-
-
-               <div class="clearfix col-md-12 col-sm-12">
-                    <hr>
-               </div>
-
-               <div class="col-md-12 col-sm-12">
-                    <ul class="social-icon">
-                         <li><a href="https://www.facebook.com/profile.php?id=61553799650308" class=""><ion-icon name="logo-facebook"></ion-icon></a></li>
-                         <li><a href="#" class=""><ion-icon name="logo-behance"></ion-icon></a></li>
-                         <li><a href="#" class=""><ion-icon name="logo-dribbble"></ion-icon></a></li>
-                         <li><a href="#" class=""><ion-icon name="logo-instagram"></ion-icon></a></li>
-                         <li><a href="#" class=""><ion-icon name="play-outline"></ion-icon></a></li>
-                    </ul>
-               </div>
-               
-          </div>
-     </div>
-</footer>
-
-<!-- Back top -->
-<a href="#back-top" class="go-top"><ion-icon name="chevron-up-outline"></ion-icon></a>
-
-<!-- SCRIPTS -->
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script src="{% static 'js/jquery.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/jquery.parallax.js' %}"></script>
-<script src="{% static 'js/custom.js' %}"></script>
-
-</body>
-</html>
+{% endblock %}
