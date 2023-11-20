@@ -79,7 +79,7 @@ class Blog(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('article-detail', kwargs={'slug': self.slug})
+        return reverse('article-detail', kwargs={'category': self.category, 'slug': self.slug})
 
 
 class Comment(models.Model):
