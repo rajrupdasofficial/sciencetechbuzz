@@ -3,6 +3,8 @@ from .models import Blog, Analytics, Comment, Contact
 from django.core.paginator import Paginator
 from gallery.models import Photo
 from django.contrib import messages
+from django.views.decorators.http import require_GET
+from django.http import HttpResponse
 
 websitenames = "Science Tech Buzz"
 
@@ -133,3 +135,15 @@ def aboutview(request):
         return render(request, "about.html", context)
     else:
         messages.error(request, "Something went wrong please try again")
+
+
+@require_GET
+def robots_txt(request):
+    return HttpResponse(robots_txt_content, content_type="text/plain")
+
+
+robots_txt_content = """\
+User-agent: *
+Disallow: 
+Sitemap: https://sciencetechbuzz.com/sitemap.xml
+"""
