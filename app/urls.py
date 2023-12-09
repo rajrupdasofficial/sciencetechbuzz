@@ -2,7 +2,6 @@ from django.urls import path
 from .views import index, blogdetail, galleryview, contactview, aboutview, robots_txt
 from .sitemaps import StaticViewSitemap, BlogSitemap, CategorySitemap
 from django.contrib.sitemaps.views import sitemap
-from django.contrib.sitemaps.views import sitemap
 
 sitemaps = {
     'static': StaticViewSitemap,
