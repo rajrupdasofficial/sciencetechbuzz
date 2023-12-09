@@ -6,8 +6,8 @@ from .models import Blog, Analytics, Comment, Contact
 @admin.register(Blog)
 class PostAdmin(admin.ModelAdmin):
     exclude = ['slug']
-    list_display = ('title', 'created', 'updated',)
-    list_display_links = ('title',)
+    list_display = ('_id', 'title', 'created', 'updated',)
+    list_display_links = ('_id', 'title',)
     list_per_page = 30
 
 

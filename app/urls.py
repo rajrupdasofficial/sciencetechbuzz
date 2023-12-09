@@ -1,16 +1,18 @@
 from django.urls import path
 from .views import index, blogdetail, galleryview, contactview, aboutview, robots_txt
-from app.sitemaps import BlogPostSitemap
+from .sitemaps import StaticViewSitemap, BlogSitemap, CategorySitemap
 from django.contrib.sitemaps.views import sitemap
 
 sitemaps = {
-    'blogposts': BlogPostSitemap,
+    'static': StaticViewSitemap,
+    'blog': BlogSitemap,
+    'category': CategorySitemap,
 }
 
 
 urlpatterns = [
     path("", index, name="indexpage"),
-    path("<str:category>/<slug:slug>.html", blogdetail, name="article-detail"),
+    path("<str:category>/<slug:slug>", blogdetail, name="article-detail"),
     path("artgallery", galleryview, name="gallery"),
     path("contact", contactview, name="contact"),
     path("about", aboutview, name="about"),

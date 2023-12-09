@@ -1,7 +1,48 @@
 from django.contrib.sitemaps import Sitemap
 from .models import Blog
+from django.urls import reverse
 
 
-class BlogPostSitemap(Sitemap):
+class StaticViewSitemap(Sitemap):
+    # Priority for all URLs
+    priority = 0.5
+    # Change frequency for all URLs
+    changefreq = 'weekly'
+
     def items(self):
-        return Blog.objects.all()
+        # Return a list of URL names for static views
+        return ['indexpage', 'contact', 'about', 'gallery']
+
+    def location(self, item):
+        # Return the URL for the given URL name
+        return reverse(item)
+
+
+class BlogSitemap(Sitemap):
+    # Priority for blog detail URLs
+    priority = 0.7
+    changefreq = 'daily'
+
+    def items(self):
+        # Return queryset of dynamic URLs for blogdetailview
+        return Blog.objects.all()  # Replace YourBlogModel with your actual model
+
+    def location(self, obj):
+        # Return the URL for each blog detail item
+        # Adjust this based on your URL structure
+        return f'/{obj.category}/{obj.slug}'
+
+
+class CategorySitemap(Sitemap):
+    # Priority for category URLs
+    priority = 0.6
+    changefreq = 'weekly'
+
+    def items(self):
+        # Return queryset of dynamic URLs for category view
+        # Replace YourCategoryModel with your actual model
+        return Blog.objects.all().order_by('-created')
+
+    def location(self, obj):
+        # Return the URL for each category item
+        return f'/{obj.category}/'  # Adjust this based on your URL structure
