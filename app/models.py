@@ -71,6 +71,7 @@ class Blog(models.Model):
     files = models.FileField(upload_to=media_file_upload,
                              null=True, blank=True, default=None, max_length=355)
     featured = models.BooleanField(default=False)
+    archived = models.BooleanField(default=False)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -159,12 +160,3 @@ class Contact(models.Model):
 
     class Meta:
         ordering = ['-created']
-
-
-class TestModel(models.Model):
-    name = models.CharField(max_length=255)
-    bio = models.CharField(max_length=255)
-    ex = models.CharField(max_length=255)
-
-    def __str__(self) -> str:
-        return f"{self.name}"
