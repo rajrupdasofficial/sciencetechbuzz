@@ -8,7 +8,7 @@ certifi==2024.7.4
 cffi==1.16.0
 charset-normalizer==3.3.2
 coverage==7.3.2
-cryptography==42.0.4
+cryptography==43.0.1
 Django==4.2.16
 django-ckeditor==6.7.0
 django-js-asset==2.1.0
